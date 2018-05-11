@@ -12,7 +12,7 @@ class ArticleController extends Controller
     public function main()
     {
 
-        return $this->render('main/article.html.twig', [
+        return $this->render('/article.html.twig', [
             'controller_name' => 'ArticleController',
         ]);
     }
@@ -23,7 +23,7 @@ class ArticleController extends Controller
     public function show($slug)
     {
 
-        return $this->render('main/articles.html.twig', [
+        return $this->render('/articles.html.twig', [
             'controller_name' => 'ArticleController',
         ]);
     }

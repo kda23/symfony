@@ -9,7 +9,7 @@ class MainController extends Controller
      */
     public function index()
     {
-        return $this->render('main/index.html.twig', [
+        return $this->render('/index.html.twig', [
     'controller_name' => 'MainController',
     'action_name' => 'index',
     ]);

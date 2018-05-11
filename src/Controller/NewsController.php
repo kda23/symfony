@@ -9,7 +9,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return $this->render('main/news.html.twig', [
+        return $this->render('/news.html.twig', [
             'controller_name' => 'NewsController',
             'test' => 'test',
         ]);

@@ -9,7 +9,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return $this->render('main/contact.html.twig', [
+        return $this->render('/contact.html.twig', [
             'controller_name' => 'ContactController',
             'test' => 'test',
         ]);
