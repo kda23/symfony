@@ -1,17 +1,31 @@
 <?php
 namespace App\Controller;
-
-
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
+//use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
-
-class ArticleController
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+class ArticleController extends Controller
 {
     /**
-     * @Route("/news/{slug}")
+     * @Route("/article")
+     */
+    public function main()
+    {
+
+        return $this->render('main/article.html.twig', [
+            'controller_name' => 'ArticleController',
+        ]);
+    }
+
+    /**
+     * @Route("/article/{slug}")
      */
     public function show($slug)
     {
-        return new Response(sprintf('Future page to show the article: %s', $slug));
+
+        return $this->render('main/articles.html.twig', [
+            'controller_name' => 'ArticleController',
+        ]);
     }
+
 }
