@@ -11,9 +11,8 @@ class ArticleController extends Controller
      */
     public function main()
     {
-
         return $this->render('/article.html.twig', [
-            'controller_name' => 'ArticleController',
+            'controller_name' => 'Article',
         ]);
     }
 
@@ -22,10 +21,30 @@ class ArticleController extends Controller
      */
     public function show($slug)
     {
-
         return $this->render('/articles.html.twig', [
-            'controller_name' => 'ArticleController',
+            'controller_name' => 'Article',
         ]);
     }
 
+    /**
+     * @Route("/")
+     */
+    public function index()
+    {
+        return $this->render('/index.html.twig', [
+            'controller_name' => 'Homepage',
+            'action_name' => 'index',
+        ]);
+    }
+
+    /**
+     * @Route("/contact")
+     */
+    public function contact()
+    {
+        return $this->render('/contact.html.twig', [
+            'controller_name' => 'Contact',
+            'action_name' => 'index',
+        ]);
+    }
 }
