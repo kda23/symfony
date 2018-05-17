@@ -17,16 +17,6 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/article/{slug}")
-     */
-    public function show($slug)
-    {
-        return $this->render('/articles.html.twig', [
-            'controller_name' => 'Article',
-        ]);
-    }
-
-    /**
      * @Route("/")
      */
     public function index()
@@ -45,6 +35,28 @@ class ArticleController extends Controller
         return $this->render('/contact.html.twig', [
             'controller_name' => 'Contact',
             'action_name' => 'index',
+        ]);
+    }
+
+    /**
+     * @Route("/blog", name="blog")
+     */
+    public function blog()
+    {
+        $posts = $this->getDoctrine()->getRepository(\App\Entity\Post::class)->findAll();
+
+        return $this->render('/blog.html.twig', compact('posts'));
+    }
+
+    /**
+     * @Route("/blog/{articleId}", name="article")
+     */
+    public function article($articleId)
+    {
+        $post = $this->getDoctrine()->getRepository(\App\Entity\Post::class)->find($articleId);
+
+        return $this->render('/articles.html.twig', [
+            'post' => $post,
         ]);
     }
 }

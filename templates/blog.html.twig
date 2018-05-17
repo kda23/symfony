@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block title %}Hello{% endblock %}
 
 {% block body %}
 <style>
@@ -9,13 +9,13 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! </h1>
+    <h1>Blog posts</h1>
     <div class="row">
         <nav class="footer-nav">
-            <ul style="size: 14px;">
-                <li><a href="/article/1" class="animsition-link">1</a></li>
-                <li><a href="/article/2" class="animsition-link">2</a></li>
-                <li><a href="/article/3" class="animsition-link">3</a></li>
+            <ul>
+                {% for post in posts %}
+                    <li><a href="{{ path('article', {'articleId' : post.id}) }}">{{ post.title }}</a></li>
+                {% endfor %}
             </ul>
         </nav>
 </div>
