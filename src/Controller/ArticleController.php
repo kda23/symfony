@@ -44,9 +44,9 @@ class ArticleController extends Controller
      */
     public function blog()
     {
-        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        $categories = $this->getDoctrine()->getRepository(\App\Entity\Category::class)->findAll();
 
-        return $this->render('/blog.html.twig', compact('posts'));
+        return $this->render('/blog.html.twig', compact('categories'));
     }
 
     /**
