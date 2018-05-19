@@ -8,15 +8,16 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Blog posts</h1>
-    <div class="row">
-        <nav class="footer-nav">
-            <ul>
-                {% for post in posts %}
-                    <li><a href="{{ path('article', {'articleId' : post.id}) }}">{{ post.title }}</a></li>
+    <div class="example-wrapper">
+        <h1>Blog posts</h1>
+
+                {% for category in categories %}
+                <h2>{{ category.title }}</h2>
+                <ul>
+                    {% for post in category.posts %}
+                        <li><a href="{{ path('article', {'articleId' : post.id}) }}">{{ post.title }}</a></li>
+                    {% endfor %}
+                </ul>
                 {% endfor %}
-            </ul>
-        </nav>
 </div>
 {% endblock %}
