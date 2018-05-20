@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use App\Entity\Category;
 use Symfony\Component\Routing\Annotation\Route;
 //use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -50,14 +51,13 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/blog/{articleId}", name="article")
+     * @Route("/blog/{slug}", name="article")
+     * @ParamConverter("slug", class="App:Post")
      */
-    public function article($articleId)
+    public function article($slug)
     {
-        $post = $this->getDoctrine()->getRepository(\App\Entity\Post::class)->find($articleId);
-
         return $this->render('/articles.html.twig', [
-            'post' => $post,
+            'post' => $slug,
         ]);
     }
 }
