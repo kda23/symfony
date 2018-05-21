@@ -1,7 +1,9 @@
 <?php
 namespace App\Controller;
+use App\Repository\CategoryRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use App\Entity\Category;
+use App\Entity\Post;
 use Symfony\Component\Routing\Annotation\Route;
 //use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -43,9 +45,9 @@ class ArticleController extends Controller
     /**
      * @Route("/blog", name="blog")
      */
-    public function blog()
+    public function blog(CategoryRepository $categoryRepositorys)
     {
-        $categories = $this->getDoctrine()->getRepository(\App\Entity\Category::class)->findAll();
+        $categories = $categoryRepositorys->findAll();
 
         return $this->render('/blog.html.twig', compact('categories'));
     }
