@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 //use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-class ArticleController extends Controller
+class MainController extends Controller
 {
     /**
      * @Route("/article")
