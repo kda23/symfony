@@ -52,14 +52,19 @@ class MainController extends Controller
         return $this->render('/blog.html.twig', compact('categories'));
     }
 
+
     /**
-     * @Route("/blog/{slug}", name="article")
-     * @ParamConverter("slug", class="App:Post")
+     * @Route("/blog/{slugPost}", name="article")
+     * @ParamConverter("post", options={"mapping": {"slugPost": "slug"}})
      */
-    public function article($slug)
+
+    public function article(Post $post) // Type hitting
     {
         return $this->render('/articles.html.twig', [
-            'post' => $slug,
+            'post' => $post,
         ]);
     }
+
+
+
 }
