@@ -9,10 +9,11 @@
 </style>
 
     <div class="example-wrapper">
-        <h1>Blog categories</h1>
-
-                {% for category in categories %}
-                <h2><li><a href="{{ path('category', {'slugCategory' : category.slug}) }}">{{ category.title }}</a></li></h2>
-                {% endfor %}
+        <h1>Category posts</h1>
+                <ul>
+                    {% for post in category.posts %}
+                        <li><a href="{{ app.request.pathinfo }}{{ path('category', {'slugCategory' : post.slug}) }}">{{ post.title }}</a></li>
+                    {% endfor %}
+                </ul>
 </div>
 {% endblock %}

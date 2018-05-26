@@ -53,17 +53,33 @@ class MainController extends Controller
     }
 
 
+
     /**
-     * @Route("/blog/{slugPost}", name="article")
-     * @ParamConverter("post", options={"mapping": {"slugPost": "slug"}})
+     * @Route("/{slugCategory}", name="category")
+     * @ParamConverter("category", options={"mapping": {"slugCategory" : "slug"}})
      */
 
-    public function article(Post $post) // Type hitting
+    public function category(Category $category)
+    {
+        return $this->render('/caterories.html.twig', [
+            'category' => $category,
+        ]);
+    }
+
+    /**
+    * @Route("/{slugCategory}/{postSlug}", name="article")
+    * @ParamConverter("post", options={"mapping": {"postSlug": "slug"}})
+    * @ParamConverter("category", options={"mapping": {"slugCategory": "slug"}})
+    */
+    public function article(Post $post, Category $category)
     {
         return $this->render('/articles.html.twig', [
             'post' => $post,
         ]);
     }
+
+
+
 
 
 
