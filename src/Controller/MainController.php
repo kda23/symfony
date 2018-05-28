@@ -50,9 +50,7 @@ class MainController extends Controller
         $categories = $categoryRepositorys->findAll();
 
         return $this->render('/blog.html.twig', compact('categories'));
-    }
-
-
+     }
 
     /**
      * @Route("/{slugCategory}", name="category")
@@ -76,11 +74,5 @@ class MainController extends Controller
         return $this->render('/articles.html.twig', [
             'post' => $post,
         ]);
-    }
-
-
-
-
-
-
+     }
 }
