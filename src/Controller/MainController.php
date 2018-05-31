@@ -1,13 +1,19 @@
 <?php
+
 namespace App\Controller;
+
 use App\Repository\CategoryRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use App\Entity\Category;
 use App\Entity\Post;
 use Symfony\Component\Routing\Annotation\Route;
-//use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use App\Service\MyManager;
+use App\Service\PostManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\ORM\EntityRepository;
+
+
 class MainController extends Controller
 {
     /**
@@ -56,7 +62,6 @@ class MainController extends Controller
      * @Route("/{slugCategory}", name="category")
      * @ParamConverter("category", options={"mapping": {"slugCategory" : "slug"}})
      */
-
     public function category(Category $category)
     {
         return $this->render('/caterories.html.twig', [
@@ -66,12 +71,12 @@ class MainController extends Controller
 
     /**
     * @Route("/{slugCategory}/{postSlug}", name="article")
-    * @ParamConverter("post", options={"mapping": {"postSlug": "slug"}})
     * @ParamConverter("category", options={"mapping": {"slugCategory": "slug"}})
+    * @ParamConverter("post", options={"mapping": {"postSlug": "slug"}})
     */
     public function article(Post $post, Category $category)
     {
-        return $this->render('/articles.html.twig', [
+        return $this->render('articles.html.twig', [
             'post' => $post,
         ]);
      }
