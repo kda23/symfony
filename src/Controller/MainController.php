@@ -5,6 +5,9 @@ namespace App\Controller;
 use App\Repository\CategoryRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use App\Entity\Category;
+use App\Entity\Tag;
+use App\Repository\PostRepository;
+use App\Repository\TagRepository;
 use App\Entity\Post;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\MyManager;
@@ -59,12 +62,12 @@ class MainController extends Controller
      }
 
     /**
-     * @Route("/{slugCategory}", name="category")
+     * @Route("cat/{slugCategory}", name="category")
      * @ParamConverter("category", options={"mapping": {"slugCategory" : "slug"}})
      */
     public function category(Category $category)
     {
-        return $this->render('/caterories.html.twig', [
+        return $this->render('caterories.html.twig', [
             'category' => $category,
         ]);
     }
@@ -80,4 +83,41 @@ class MainController extends Controller
             'post' => $post,
         ]);
      }
-}
+
+    /**
+    * @Route("/tag/{tagTitle}", name="tag")
+    * @ParamConverter("tag", options={"mapping": {"tagTitle": "title"}})
+    */
+    public function tag(Tag $tag)
+    {
+        return $this->render('/tag.html.twig', compact('tag'));
+    }
+
+    public function tags(TagRepository $repository, $place = null)
+    {
+       $tags = $repository->findAll(); dump($place);
+       return $this->render('/block/tags.html.twig',
+        compact('tags')
+       );
+    }
+
+//    /**
+//    * @Route("/bytag", name="tagged")
+//     */
+//    public function tagged()
+//    {
+//        $tags = $this->getDoctrine()->getRepository(Tag::class)->findAll();
+//        return $this->render('tagged.html.twig', compact('tags'));
+//    }
+//
+//    /**
+//    * @Route("bytag/{id}", name="tag")
+//    */
+//    public function tag($id)
+//    {
+//        $tag = $this->getDoctrine()->getRepository(Tag::class)->find($id);
+//        return $this->render('tag.html.twig', [
+//            'tag' => $tag,
+//        ]);
+//    }
+ }
