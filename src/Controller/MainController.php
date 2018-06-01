@@ -100,24 +100,4 @@ class MainController extends Controller
         compact('tags')
        );
     }
-
-//    /**
-//    * @Route("/bytag", name="tagged")
-//     */
-//    public function tagged()
-//    {
-//        $tags = $this->getDoctrine()->getRepository(Tag::class)->findAll();
-//        return $this->render('tagged.html.twig', compact('tags'));
-//    }
-//
-//    /**
-//    * @Route("bytag/{id}", name="tag")
-//    */
-//    public function tag($id)
-//    {
-//        $tag = $this->getDoctrine()->getRepository(Tag::class)->find($id);
-//        return $this->render('tag.html.twig', [
-//            'tag' => $tag,
-//        ]);
-//    }
  }
