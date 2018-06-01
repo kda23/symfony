@@ -62,7 +62,7 @@ class MainController extends Controller
      }
 
     /**
-     * @Route("cat/{slugCategory}", name="category")
+     * @Route("/{slugCategory}", name="category")
      * @ParamConverter("category", options={"mapping": {"slugCategory" : "slug"}})
      */
     public function category(Category $category)
