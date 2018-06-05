@@ -1,7 +1,7 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
-    providers:
-        in_memory: { memory: ~ }
+#    providers:
+#        in_memory: { memory: ~ }
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -22,3 +22,10 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
+    providers:
+        webservice:
+            id: App\Security\User\WebserviceUserProvider
+
+        encoders:
+            App\Security\User\WebserviceUser: bcrypt
